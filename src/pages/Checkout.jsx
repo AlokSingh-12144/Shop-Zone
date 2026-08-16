@@ -27,9 +27,9 @@ const Checkout = () => {
   const [isOrdered, setIsOrdered] = useState(false);
   const [orderId, setOrderId] = useState('');
 
-  const shippingCost = totalPrice > 50 ? 0 : 9.99;
-  const tax = totalPrice * 0.08;
-  const grandTotal = totalPrice + shippingCost + tax;
+  const shippingCost = totalPrice * 84 > 4200 ? 0 : 849;
+  const tax = totalPrice * 84 * 0.08;
+  const grandTotal = totalPrice * 84 + shippingCost + tax;
 
   const handleInputChange = (e) => {
     setShippingInfo({ ...shippingInfo, [e.target.name]: e.target.value });
@@ -63,7 +63,7 @@ const Checkout = () => {
             </div>
             <div className="receipt-row">
               <span>Total Paid:</span>
-              <strong>${grandTotal.toFixed(2)}</strong>
+              <strong>₹{grandTotal.toFixed(0)}</strong>
             </div>
             <div className="receipt-row">
               <span>Shipping Address:</span>
@@ -210,7 +210,7 @@ const Checkout = () => {
             </div>
 
             <button type="submit" className="btn-primary place-order-btn">
-              <Lock size={18} /> Place Order (${grandTotal.toFixed(2)})
+              <Lock size={18} /> Place Order (₹{grandTotal.toFixed(0)})
             </button>
           </form>
         </div>
@@ -225,10 +225,10 @@ const Checkout = () => {
                   <div className="mini-details">
                     <span className="mini-title">{item.title}</span>
                     <span className="mini-qty-price">
-                      {item.quantity} × ${item.price.toFixed(2)}
+                    {item.quantity} × ₹{(item.price * 84).toFixed(0)}
                     </span>
                   </div>
-                  <span className="mini-total">${(item.price * item.quantity).toFixed(2)}</span>
+                  <span className="mini-total">₹{(item.price * 84 * item.quantity).toFixed(0)}</span>
                 </div>
               ))}
             </div>
@@ -237,22 +237,22 @@ const Checkout = () => {
 
             <div className="summary-row">
               <span>Subtotal</span>
-              <span>${totalPrice.toFixed(2)}</span>
+              <span>₹{(totalPrice * 84).toFixed(0)}</span>
             </div>
             <div className="summary-row">
               <span>Shipping</span>
-              <span>{shippingCost === 0 ? 'FREE' : `$${shippingCost.toFixed(2)}`}</span>
+              <span>{shippingCost === 0 ? 'FREE' : `₹${shippingCost.toFixed(0)}`}</span>
             </div>
             <div className="summary-row">
               <span>Taxes (8%)</span>
-              <span>${tax.toFixed(2)}</span>
+              <span>₹{tax.toFixed(0)}</span>
             </div>
 
             <div className="summary-divider"></div>
 
             <div className="summary-row total-row">
               <span>Total Due</span>
-              <span className="grand-price">${grandTotal.toFixed(2)}</span>
+              <span className="grand-price">₹{grandTotal.toFixed(0)}</span>
             </div>
 
             <div className="checkout-trust-badge">

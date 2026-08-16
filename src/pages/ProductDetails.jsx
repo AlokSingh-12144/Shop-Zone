@@ -126,7 +126,7 @@ const ProductDetails = () => {
           </div>
 
           <div className="details-price-row">
-            <span className="details-price">${product.price}</span>
+            <span className="details-price">₹{(product.price * 84).toFixed(0)}</span>
             {product.discountPercentage && (
               <span className="discount-pill">
                 {product.discountPercentage}% OFF
@@ -160,7 +160,7 @@ const ProductDetails = () => {
             </div>
 
             <button onClick={handleAddToCart} className="btn-primary add-to-cart-large">
-              <ShoppingCart size={20} /> Add to Cart (${(product.price * quantity).toFixed(2)})
+              <ShoppingCart size={20} /> Add to Cart (₹{(product.price * 84 * quantity).toFixed(0)})
             </button>
           </div>
 

@@ -11,7 +11,7 @@ const Footer = () => {
             <Truck className="feature-icon" />
             <div>
               <h4>Free Delivery</h4>
-              <p>On all orders over $50</p>
+              <p>On all orders over ₹4,200</p>
             </div>
           </div>
           <div className="feature-item">

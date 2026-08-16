@@ -7,9 +7,9 @@ const Cart = () => {
   const { cart, updateQuantity, removeFromCart, clearCart, totalPrice, totalItems } = useCart();
   const navigate = useNavigate();
 
-  const shippingCost = totalPrice > 50 || totalItems === 0 ? 0 : 9.99;
-  const tax = totalPrice * 0.08;
-  const grandTotal = totalPrice + shippingCost + tax;
+  const shippingCost = totalPrice * 84 > 4200 || totalItems === 0 ? 0 : 849;
+  const tax = totalPrice * 84 * 0.08;
+  const grandTotal = totalPrice * 84 + shippingCost + tax;
 
   if (cart.length === 0) {
     return (
@@ -61,7 +61,7 @@ const Cart = () => {
                   </div>
                 </div>
 
-                <div className="item-unit-price">${item.price.toFixed(2)}</div>
+                <div className="item-unit-price">₹{(item.price * 84).toFixed(0)}</div>
 
                 <div className="item-qty-controls">
                   <button
@@ -80,7 +80,7 @@ const Cart = () => {
                 </div>
 
                 <div className="item-line-total">
-                  ${(item.price * item.quantity).toFixed(2)}
+                  ₹{(item.price * 84 * item.quantity).toFixed(0)}
                 </div>
 
                 <div className="item-remove">
@@ -109,24 +109,24 @@ const Cart = () => {
 
             <div className="summary-row">
               <span>Subtotal ({totalItems} items)</span>
-              <span>${totalPrice.toFixed(2)}</span>
+              <span>₹{totalPrice * 84 > 0 ? (totalPrice * 84).toFixed(0) : '0'}</span>
             </div>
 
             <div className="summary-row">
               <span>Estimated Shipping</span>
-              <span>{shippingCost === 0 ? 'FREE' : `$${shippingCost.toFixed(2)}`}</span>
+              <span>{shippingCost === 0 ? 'FREE' : `₹${shippingCost.toFixed(0)}`}</span>
             </div>
 
             <div className="summary-row">
               <span>Estimated Tax (8%)</span>
-              <span>${tax.toFixed(2)}</span>
+              <span>₹{tax.toFixed(0)}</span>
             </div>
 
             <div className="summary-divider"></div>
 
             <div className="summary-row total-row">
               <span>Grand Total</span>
-              <span className="grand-price">${grandTotal.toFixed(2)}</span>
+              <span className="grand-price">₹{grandTotal.toFixed(0)}</span>
             </div>
 
             <button

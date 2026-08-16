@@ -54,10 +54,10 @@ const ProductCard = ({ product }) => {
 
         <div className="card-footer-flex">
           <div className="price-tag">
-            <span className="current-price">${product.price}</span>
+            <span className="current-price">₹{(product.price * 84).toFixed(0)}</span>
             {product.discountPercentage && (
               <span className="old-price">
-                ${(product.price * (1 + product.discountPercentage / 100)).toFixed(2)}
+                ₹{(product.price * 84 * (1 + product.discountPercentage / 100)).toFixed(0)}
               </span>
             )}
           </div>
